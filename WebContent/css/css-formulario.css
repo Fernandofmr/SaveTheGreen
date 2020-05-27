@@ -1,0 +1,290 @@
+body{
+    margin: auto;
+    display: block;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 1800px;
+}
+
+h1{
+    margin-left: 350px;
+    margin-top: 100px;
+    font-family: serif;
+    color: #09a223;
+    font-size: 3.5rem;
+}
+
+#contenedor_formulario{
+    margin-left: 280px;
+    margin-top: 60px;
+    background-color:aliceblue;   
+    width: 700px;
+    height: auto;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 7px 7px grey;
+    border: 2px solid black;
+}
+
+input[type="submit"]{
+    margin-left: 220px;
+    margin-top: 120px;
+    padding: 20px;
+    border-radius: 50px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    background-color: #09a223;
+    box-shadow: 4px 4px 4px 4px grey;
+    color: darkslategrey;
+}
+
+.izquierda{
+    margin-left: -50px;
+}
+
+input[type="submit"]:active{
+    box-shadow: 2px 2px 2px 2px grey;
+}
+
+.fuente{
+    font-family: sans-serif;
+    color: darkslategrey;
+}
+
+.azul{
+    width: 100%;
+    height: 60px;
+    background-color: #0B8CBF;
+    color: white;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: -20px;
+}
+
+.azul img{
+    border-radius: 50px;
+}
+
+.telefono{
+    margin-left: 550px;
+    margin-top: -75px;
+}
+
+.direccion{
+    margin-left: 850px;
+    margin-top: -40px;
+}
+
+td{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+input, select{
+    border-radius: 25px;
+    font-size: 1.2rem;
+    padding: 10px;
+}
+
+textarea{
+    border-radius: 25px;
+}
+
+.margenIz{
+    margin-left: 30px;
+    margin-top: 15px;
+    padding: 20px;
+}
+
+#fecha_nacimiento{
+    font-family: sans-serif;
+    color: grey;
+    font-size: 1.2rem;
+}
+
+label.error{
+    color: darkred;
+}
+
+#registro label.error{
+    font-size: 0.9em;
+    color: darkred;
+    font-weight: bold;
+}
+
+#form_datos label.error{
+    font-size: 0.9em;
+    color: darkred;
+    font-weight: bold;
+}
+
+.containerEncabezado{
+    margin-top: -250px;
+    margin-left: 550px;
+    font-size: 1.8rem;
+    font-family: serif;
+}
+
+.color-default{ 
+    color:#09a223 !important;
+}
+
+#comprobar{
+    margin: auto;
+}
+
+.pago{
+    margin-right: 550px;
+}
+
+#tarjeta, #fecha_tarjeta, #email, #n_tarjeta, #f_tarjeta, #e_mail{
+
+    visibility: hidden;
+}
+
+.mod{
+    margin-left: 180px;
+}
+
+.mod2{
+    margin-left: 160px;
+}
+
+.productos img{
+    width: 250px;
+    height: 250px;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+td img{
+    border-radius: 10px;
+}
+
+input[type="button"]{
+    margin-top: 120px;
+    border-radius: 50px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    background-color: #F9B842;
+    box-shadow: 4px 4px 4px 4px grey;
+    color: black;
+    position: absolute;
+    z-index: 100;
+    margin-left: 700px;
+    padding: 20px;
+}
+
+table h2{
+    position: relative;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#menu{
+    margin-left: 350px;
+}
+
+#menu a{
+    text-decoration: none;
+    float: left;
+    margin-top: 100px;
+    text-align: left;
+    font-family: "Open Sans",sans-serif;
+    font-weight:400;
+    line-height:normal; 
+    color:#000;  
+    font-size:16px;
+    text-transform:none;
+    margin-left: 40px;
+}
+
+#menu a:hover{
+    padding: 20px;
+    background-color: #09a223;
+    color: white;
+    border-radius: 25px;
+    text-align: center;
+    margin-left: 20px;
+    margin-top: 80px;
+}
+
+#tomate, #lechuga, #pimientoR, #pimientoV, #platano, #manzana, #naranja, #pera, #jabon, #champu{
+    float: left;
+}
+
+.referencia{
+    font-size: 1rem;
+}
+
+button{
+    margin-left: 50px;
+    padding: 15px;
+    border-radius: 20px;
+    margin-top: -50px;
+    background-color: #F9B842;
+    font-weight: bold;
+}
+
+.display{
+    margin-left: 25px;
+    border: 2px solid grey;
+    text-align: right;
+}
+
+#carrito td{
+    padding-bottom: 150px;
+}
+
+.container{
+    float: left;
+}
+
+.genCompra{
+    position: fixed;
+    float: right;
+    margin-top: -90px;
+}
+
+.genRed{
+    background-color: red !important;
+}
+
+.fondo, h3{
+    background-color: lavender !important;
+}
+
+.tablaProductos{
+    position: absolute;
+    margin-top: -90px;
+    margin-left: 20px;
+}
+
+.cabecera{
+    border-top: 5px solid lavender;
+    border-bottom: 5px solid lavender;
+}
+
+.tablaProductos a:hover{
+    color: red;
+    text-decoration: none;
+}
+
+.tablaProductos a{
+    color: #09a223;
+}
+
+.cabecera th{
+    padding: 10px;
+    text-align: center;
+}
+
+tbody td{
+    padding: 10px;
+    text-align: center;
+}
+
+
