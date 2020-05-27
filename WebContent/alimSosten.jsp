@@ -129,7 +129,7 @@
             
             <p>Ante la limitación de los recursos hídricos y terrestres, es necesario un cambio alimentario que no sólo contribuya a la seguridad alimentaria para el crecimiento previsto de la población, sino que además asegure el cuidado de nuestro planeta. </p>
             <p>Sin duda, la alimentación saludable y sostenible (ASS) podría ser la respuesta.apostar por una alimentación saludable y sostenible es invertir en salud. Es importante promover una alimentación suficiente, completa, equilibrada, satisfactoria, segura, adaptada al comensal, al entorno, sostenible y asequible. Y en definitiva, trabajar para transformación global del sistema alimentario.</p>
-            
+            <p>(CONTENIDO DE PRUEBA, QUITAR CUANDO PROCEDA)</p>
         </div>
             </div>
         </section>
