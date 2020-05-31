@@ -92,11 +92,12 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		UsuariosDao daoUsuario = new UsuariosDao();  
+		  
 		
 		String email = request.getParameter("email"); //estos datos los toma de inicioSesion.jsp
 		String passIntroducida = request.getParameter("contrasenia");
 		
+		UsuariosDao daoUsuario = new UsuariosDao();
 		Usuario usuario = daoUsuario.leer(email);
 
 		if(usuario == null) {  //Usuario es nuevo, nunca se ha registrado.
@@ -144,14 +145,12 @@ public class LoginServlet extends HttpServlet {
 
 		switch(usuario.getTipo()) {
 			case 1: //Caso del Gerente
-				/*
-				 * // LLAMA AL MENU DEL GERENTE (ESTA PARTE QUEDA PARA EL AVANCE 3, NO HACE FALTA
-					// TOCAR MÁS DE MOMENTO)
-					RequestDispatcher rd = request.getRequestDispatcher("/indexGerente.jsp");
+				
+					RequestDispatcher rd1 = request.getRequestDispatcher("/indexGerente.jsp");
 
 					// ejecutamos el jsp
-					rd.forward(request, response);
-				 */
+					rd1.forward(request, response);
+				
 				break;
 			case 2: // Caso del Cliente..
 				RequestDispatcher rd = request.getRequestDispatcher("/indexCliente.jsp");
