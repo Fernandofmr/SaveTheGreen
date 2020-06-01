@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class listadoClientesServlet
+ * Controlador encargado de gestionar y mostrar el listado de clientes de la parte del gerente
  */
 @WebServlet("/listadoClientes")
 public class listadoClientesServlet extends HttpServlet {
