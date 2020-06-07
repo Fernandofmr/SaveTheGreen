@@ -1,54 +1,52 @@
-<!--<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>-->
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
-    <head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="" content="">
+    <title>TOPE: Índex gerente</title>
 
-        <meta charset="utf-8">
-        <title>TOPE: Listado Ventas</title>
 
-
-
-        <!-- Favicons
+    <!-- Favicons
 ================================================== -->
-        <link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="icon" type="image/png" href="images/favicon.png">
 
 
-        <!-- Fonts
+<!-- Fonts
 ================================================== -->
-        <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700%7COpen+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700%7COpen+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
 
-        <!-- CSS
+<!-- CSS
 ================================================== -->
 
-        <!-- bootstrap -->
-        <link rel="stylesheet" href="css/bootstrap.css">
+<!-- bootstrap -->
+<link rel="stylesheet" href="css/bootstrap.css">
 
-        <!-- advisor -->
-        <link rel="stylesheet" href="css/advisor.css">
+<!-- advisor -->
+<link rel="stylesheet" href="css/advisor.css">
 
-        <!-- plugins -->
-        <link rel="stylesheet" href="css/plugins.css">	
+<!-- plugins -->
+<link rel="stylesheet" href="css/plugins.css">	
 
-        <!-- advisor color -->
-        <link rel="stylesheet" id="color" href="css/color-default.css">
+<!-- advisor color -->
+<link rel="stylesheet" id="color" href="css/color-default.css">
 
-        <!-- hero slider -->
-        <link rel="stylesheet" href="css/hero-slider.css">
+<!-- hero slider -->
+<link rel="stylesheet" href="css/hero-slider.css">
 
-        <!-- responsive -->
-        <link rel="stylesheet" href="css/responsive.css">
+<!-- responsive -->
+<link rel="stylesheet" href="css/responsive.css">
 
 
-        <!-- HEADER SCRIPTS
+<!-- HEADER SCRIPTS
 
 ================================================== -->
-        <script src="js/modernizr.js"></script>
+<script src="js/modernizr.js"></script>
 
-        <script src="jquery-proyecto/jquery-3.4.1.min.js"></script>
+<script src="jquery-proyecto/jquery-3.4.1.min.js"></script>
 
-        <script>
+<script>
 
             $(document).ready(function(){
 
@@ -58,16 +56,24 @@ pageEncoding="UTF-8"%>-->
 
                 $(".nav-pills").hide().fadeIn(1000);
 
-                $(".testimonial-content").hide();
-
                 $(".service-box p").hide();
+
+                $("#contenedor_formulario").hide().fadeIn(1000);
+
+                $("#registro").hide().fadeIn(3000);
+
+                $(".titulo").hide().fadeIn(3000);
+
+
+               
 
             });
 
         </script>
 
+</head>
 
-    </head>
+
  <body class="fixed-header">
 
 
@@ -98,22 +104,22 @@ pageEncoding="UTF-8"%>-->
                 <nav class="main-nav navbar-collapse collapse" id="primary-nav" style="margin-top: 2%;">
 
                 <ul class="nav nav-pills negrita">
-                    <li class="dropdown"><a href="">Gestión gerente  <img src="imagenes/styled-select-arrow.png" alt=""> </a>
+                    <li class="dropdown"><a href="">Gestión Clientes  <img src="imagenes/styled-select-arrow.png" alt=""> </a>
                         <ul class="dropdown-menu">
-                            <li><a href="clientesListado.jsp">Listado clientes</a></li>
-                            <li><a href="">Alta/Baja gerente</a></li>
+                            <li><a href="">Informe clientes</a></li>
+                            <li><a href="">Alta/Baja cliente</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown"><a href="">Gestión ventas  <img src="imagenes/styled-select-arrow.png" alt=""></a>
+                    <li class="dropdown"><a href="">Gestión Ventas  <img src="imagenes/styled-select-arrow.png" alt=""></a>
                         <ul class="dropdown-menu">
                             <li><a href="ventasListado.jsp">Listado ventas</a></li>
                             <li><a href="">Informe ventas</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown"><a href="#.">Catálogo productos  <img src="imagenes/styled-select-arrow.png" alt=""></a>
+                    <li class="dropdown"><a href="#.">Catálogo Productos  <img src="imagenes/styled-select-arrow.png" alt=""></a>
                         <ul class="dropdown-menu">
-                            <li><a href="productosListado.jsp">Listado productos</a></li>
-                            <li><a href="">Alta/Baja productos</a></li>
+                            <li><a href="productosListado.jsp">Listado Productos</a></li>
+                            <li><a href="">Añadir/Quitar Productos</a></li>
                 </ul>
             </li>
         </ul>
@@ -136,47 +142,30 @@ pageEncoding="UTF-8"%>-->
         <section class="bg-blue">
             <div class="container">
 
-                <h2>Listado Ventas</h2>
+                <h2>Listado clientes</h2>
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">N.</th>
+                            <th scope="col">Nombre</th>
                             <th scope="col">ID Venta</th>
                             <th scope="col">ID Cliente</th>
-                            <th scope="col">Fecha</th>
-                            <th scope="col">Hora</th>
-                            <th scope="col">Nº</th>
-                            <th scope="col">Importe</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <th scope="row">1</th>
+                            <th scope="row">Fernando</th>
                             <td>1326364</td>
                             <td>5485485</td>
-                            <td>11/11/11</td>
-                            <td>22:12</td>
-                            <td>3</td>
-                            <td>123.4</td>
                         </tr>
                         <tr>
-                            <th scope="row">2</th>
+                            <th scope="row">Elizabeth</th>
                             <td>4563546</td>
                             <td>7987897</td>
-                            <td>22/11/11</td>
-                            <td>11:12</td>
-                            <td>1</td>
-                            <td>23.4</td>
                         </tr>
                         <tr>
-                            <th scope="row">3</th>
+                            <th scope="row">Adrián</th>
                             <td>6734523</td>
                             <td>7967778</td>
-                            <td>01/11/11</td>
-                            <td>09:12</td>
-                            <td>5</td>
-                            <td>223.4</td>
-                        </tr>
                     </tbody>
                 </table>
 
