@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import="java.util.List" %>
+<%@ page import="modelos.Usuario" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -143,32 +145,40 @@
             <div class="container">
 
                 <h2>Listado clientes</h2>
+               
                 <table class="table">
-                    <thead>
+                
+                 <%List<Usuario> usuario=(List<Usuario>) request.getAttribute("listadoClientes");
+                 
+                 %><thead>
                         <tr>
                             <th scope="col">Nombre</th>
-                            <th scope="col">ID Venta</th>
+                            <th scope="col">Rol</th>
                             <th scope="col">ID Cliente</th>
                         </tr>
                     </thead>
+                
+               <%for(int i=0; i<usuario.size(); i++){ 
+               Usuario u=usuario.get(i);
+               
+               %>
+                    
                     <tbody>
                         <tr>
-                            <th scope="row">Fernando</th>
-                            <td>1326364</td>
-                            <td>5485485</td>
+                            <th scope="row"><%=u.getNombre() %></th>
+                            <td><%=u.getTipo() %></td>
+                            <td><%=u.getId() %></td>
                         </tr>
-                        <tr>
-                            <th scope="row">Elizabeth</th>
-                            <td>4563546</td>
-                            <td>7987897</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Adrián</th>
-                            <td>6734523</td>
-                            <td>7967778</td>
+                        
                     </tbody>
+                    
+                     <%} %>
+                    
                 </table>
-
+                
+               
+                
+				
             </div>
         </section>
 

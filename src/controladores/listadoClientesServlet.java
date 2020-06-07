@@ -23,34 +23,16 @@ public class listadoClientesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UsuariosDao usu=new UsuariosDao();
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public listadoClientesServlet() {
-        super();
-    }
+    
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		HttpSession lista = request.getSession();
 		RequestDispatcher rd;
 		
-		String accion = request.getParameter("accion");
 		
-		if(accion==null) {
-			
-			accion="listar";
-			
-		}
-		
-		
-		switch(accion) {
-		
-		case "listar":
-		default:
 			
 			List<Usuario> listadoClientes=usu.leerTodos();
 			
@@ -60,11 +42,7 @@ public class listadoClientesServlet extends HttpServlet {
 			
 			rd.forward(request, response);
 			
-			break;
-		
-		}
-		
-	}
+	}	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
