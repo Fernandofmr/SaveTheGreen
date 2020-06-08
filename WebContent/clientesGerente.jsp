@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="" content="">
-    <title>TOPE: Índex gerente</title>
+    <title>TOPE: Listado clientes gerente</title>
 
 
     <!-- Favicons
@@ -155,11 +155,14 @@
                             <th scope="col">Nombre</th>
                             <th scope="col">Rol</th>
                             <th scope="col">ID Cliente</th>
+                            <th scope="col">direccion</th>
                         </tr>
                     </thead>
                 
                <%for(int i=0; i<usuario.size(); i++){ 
                Usuario u=usuario.get(i);
+               
+               if(u.getTipo()==2){
                
                %>
                     
@@ -168,11 +171,13 @@
                             <th scope="row"><%=u.getNombre() %></th>
                             <td><%=u.getTipo() %></td>
                             <td><%=u.getId() %></td>
+                            <td><%=u.getDireccion() %></td>
                         </tr>
                         
                     </tbody>
                     
-                     <%} %>
+                     <%} 
+                     }%>
                     
                 </table>
                 

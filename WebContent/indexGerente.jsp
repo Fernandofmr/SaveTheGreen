@@ -107,7 +107,7 @@
                     <li class="dropdown"><a href="">Gestión Clientes  <img src="imagenes/styled-select-arrow.png" alt=""> </a>
                         <ul class="dropdown-menu">
                             <li><a href="<%= request.getContextPath() %>/listadoClientes">Listado clientes</a></li>
-                            <li><a href="">Informe clientes</a></li>
+                            <li><a href="buscaCliente.jsp">Informe clientes</a></li>
                             <li><a href="">Alta/Baja cliente</a></li>
                         </ul>
                     </li>
