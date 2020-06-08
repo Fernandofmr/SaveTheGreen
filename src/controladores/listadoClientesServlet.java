@@ -22,6 +22,7 @@ public class listadoClientesServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 	private UsuariosDao usu=new UsuariosDao();
+	private PedidoDao pedidao=new PedidoDao();
        
     
 
@@ -37,6 +38,14 @@ public class listadoClientesServlet extends HttpServlet {
 			List<Usuario> listadoClientes=usu.leerTodos();
 			
 			request.setAttribute("listadoClientes", listadoClientes);
+			
+			for(int i=0; i<listadoClientes.size(); i++) {
+				
+				List<Pedido> listadoPedidos=pedidao.leerPedidosCliente(i);
+				
+				request.setAttribute("listadoPedidos", listadoPedidos);
+				
+			}
 			
 			rd=request.getRequestDispatcher("/clientesGerente.jsp");
 			

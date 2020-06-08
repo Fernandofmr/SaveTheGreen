@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
     <%@ page import="java.util.List" %>
 <%@ page import="modelos.Usuario" %>
+<%@ page import="modelos.Pedido" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -149,6 +150,7 @@
                 <table class="table">
                 
                  <%List<Usuario> usuario=(List<Usuario>) request.getAttribute("listadoClientes");
+                 List<Pedido> pedido=(List<Pedido>) request.getAttribute("listadoPedidos");
                  
                  %><thead>
                         <tr>
@@ -156,11 +158,13 @@
                             <th scope="col">Rol</th>
                             <th scope="col">ID Cliente</th>
                             <th scope="col">direccion</th>
+                            <th scope="col">ID pedido</th>
                         </tr>
                     </thead>
                 
                <%for(int i=0; i<usuario.size(); i++){ 
                Usuario u=usuario.get(i);
+               Pedido p=pedido.get(i);
                
                if(u.getTipo()==2){
                
@@ -172,6 +176,7 @@
                             <td><%=u.getTipo() %></td>
                             <td><%=u.getId() %></td>
                             <td><%=u.getDireccion() %></td>
+                            <td><%=p.getIdPedido() %></td>
                         </tr>
                         
                     </tbody>
