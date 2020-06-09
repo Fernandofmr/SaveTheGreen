@@ -31,7 +31,7 @@ public class listadoClientesServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		RequestDispatcher rd;
+		
 		
 		
 			
@@ -51,7 +51,7 @@ public class listadoClientesServlet extends HttpServlet {
 				
 			}
 			
-			rd=request.getRequestDispatcher("/clientesGerente.jsp");
+			RequestDispatcher rd=request.getRequestDispatcher("/clientesGerente.jsp");
 			
 			rd.forward(request, response);
 			
