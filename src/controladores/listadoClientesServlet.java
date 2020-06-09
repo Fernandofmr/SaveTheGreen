@@ -41,7 +41,11 @@ public class listadoClientesServlet extends HttpServlet {
 			
 			for(int i=0; i<listadoClientes.size(); i++) {
 				
-				List<Pedido> listadoPedidos=pedidao.leerPedidosCliente(i);
+				Usuario u=listadoClientes.get(i);
+				
+				int j=u.getIdCarrito();
+				
+				List<Pedido> listadoPedidos=pedidao.leerPedidosCliente(j);
 				
 				request.setAttribute("listadoPedidos", listadoPedidos);
 				
