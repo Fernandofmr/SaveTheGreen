@@ -43,6 +43,18 @@ this.fecha = fecha;
 		this.productos = productos;
 	}
 	
+	public Pedido(int id, EstadoPedido estado, int idCliente, double total, String direccion, int forma, String fecha) {
+		
+		this.idPedido=id;
+		this.estado=estado;
+		this.idCliente=idCliente;
+		this.total=total;
+		direccionEnvio=direccion;
+		idFormaPago=forma;
+		this.fecha=fecha;
+		
+	}
+	
 	/**
 	 * @return El id del pedido
 	 */
