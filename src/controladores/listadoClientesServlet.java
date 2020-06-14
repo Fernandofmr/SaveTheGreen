@@ -39,17 +39,9 @@ public class listadoClientesServlet extends HttpServlet {
 			
 			request.setAttribute("listadoClientes", listadoClientes);
 			
-			for(int i=0; i<listadoClientes.size(); i++) {
-				
-				Usuario u=listadoClientes.get(i);
-				
-				int j=u.getIdCarrito();
-				
-				List<Pedido> listadoPedidos=pedidao.leerPedidosCliente(j);
-				
-				request.setAttribute("listadoPedidos", listadoPedidos);
-				
-			}
+			List<Pedido> listadoPedidos=pedidao.leerTodos();
+			
+			request.setAttribute("listadoPedidos", listadoPedidos);
 			
 			RequestDispatcher rd=request.getRequestDispatcher("/clientesGerente.jsp");
 			

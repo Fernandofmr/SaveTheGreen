@@ -187,5 +187,39 @@ public class PedidoDao {
 			throw new AccesoDatosException(e.getMessage());
 		}
 	}
+	
+	public List<Pedido> leerTodos(){
+		
+		try(Connection conn=DriverManager.getConnection(DataBaseConfiguration.URL)){
+			
+			Statement st=conn.createStatement();
+			ResultSet rs=st.executeQuery("SELECT * FROM pedido");
+			
+			ArrayList<Pedido> pedi=new ArrayList<>();
+			
+			while(rs.next()) {
+				
+				int id=rs.getInt("id");
+				EstadoPedido estado=EstadoPedido.valueOf(rs.getString("estado"));
+				int idcliente=rs.getInt("id_cliente");
+				double total=rs.getDouble("total");
+				String direccion=rs.getString("direccion_envio");
+				int forma=rs.getInt("forma_pago_id");
+				String fecha=rs.getString("fecha");
+				
+				Pedido p=new Pedido(id, estado, idcliente, total, direccion, forma, fecha);
+				
+				pedi.add(p);
+				
+			}
+			
+			
+			return pedi;
+			
+		}catch(SQLException e) {
+			throw new AccesoDatosException(e.getMessage());
+		}
+		
+	}
 
 }

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="modelos.Usuario" %>
+<%@ page import="java.io.File" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -39,9 +40,9 @@
             
             $(".nav-pills").hide().fadeIn(1000);
             
-            $("#registro").hide().fadeIn(3000);
+            $("#registro").hide().fadeIn(1000);
             
-            $(".titulo").hide().fadeIn(3000);
+            $(".titulo").hide().fadeIn(1000);
             
             $("#form_datos").validate({
                
@@ -136,16 +137,42 @@
                 <h1 class="titulo">Informe cliente</h1> 
                 <br><br> 
                 <div class="request-a-callback-content">
-                   	 	<p>Introduce los datos del cliene para acceder al informe <br> 
+                   	 	<p>Introduce los datos del cliente para acceder al informe <br> 
                    	 		
                    	 	</p>
                 </div>   
                 <form id="form_datos" name="form_datos" id="form_datos"  action="<%= request.getContextPath() %>/InformeClientes" method="post">
 					<div class="request-a-callback-form">
                 		<label for="nombre"></label>
-                        <input type="text" name="idCliente" id="idCliente" placeholder="Id cliente" required title="Campo obligatorio">
+                        <!--  <input type="text" name="idCliente" id="idCliente" placeholder="Id cliente" required title="Campo obligatorio">-->
+                        <input type="text" name="email" id="email" placeholder="Email cliente" required title="Campo obligatorio">
                         <input type="text" name="nombre" id="nombre" placeholder="Nombre cliente" required title="Campo obligatorio"><br>
-                        <button type="submit" data-text="Buscar cliente" class="btn btn-primary">Buscar cliente</button>
+                        <button type="submit" data-text="Buscar informe" class="btn btn-primary">Buscar informe</button><br><br><br>
+                        
+                        <%String resultado=(String)request.getAttribute("existe");
+                		  String frase=(String)request.getAttribute("frase");
+                		  File archivo=(File)request.getAttribute("archivo");		
+                		  
+                				
+			                if(resultado!=null){
+			                	
+			                	if(resultado.contains("Accede")){
+			                %>
+			                <p style="font-weight:bold; margin-left:15%"><%=frase %></p>
+			                <a href="" style="font-weight:bold"><%=resultado %></a>
+			                
+			                <%}else{%>
+			                		
+			                		<p style="font-weight:bold; margin-left:15%; color:red"><%=resultado %></p>
+			                	
+			                <%}
+			                }%>
+			                
+			                <%String contenido=(String)request.getAttribute("contenido");
+			                
+			                if(contenido!=null){%>
+			                <textarea rows="50" cols="30"><%=contenido %></textarea>
+			                <%} %>
                 	</div>	
            		</form>
            	</div>
@@ -155,40 +182,9 @@
  <!-- SECCIÓN INFORME CLIENTE  -->
         <section class="bg-blue">
             <div class="container">
-
-                <h2>Informe cliente</h2>
-               
-                <table class="table">
                 
-                <%Usuario usuario=(Usuario) request.getAttribute("usuario"); %>
-                 
-                 <thead>
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Apellido</th>
-                            <th scope="col">Direccion</th>
-                        </tr>
-                    </thead>
-                    
-                    
-                    
-                    <tbody>
-                        <tr>
-                            <th scope="row"><%=usuario.getId() %></th>
-                            <td><%=usuario.getNombre() %></td>
-                            <td><%=usuario.getApellido1() %></td>
-                            <td><%=usuario.getDireccion() %></td>
-                        </tr>
-                        
-                    </tbody>
-                    
-                    
-                </table>
                 
-               
                 
-				
             </div>
         </section>
 
