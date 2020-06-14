@@ -159,7 +159,7 @@
 			                	if(resultado.contains("Accede")){
 			                %>
 			                <p style="font-weight:bold; margin-left:15%"><%=frase %></p>
-			                <a href="" style="font-weight:bold"><%=resultado %></a>
+			                <a href="archivoPrueba.txt" style="font-weight:bold"><%=resultado %></a>
 			                
 			                <%}else{%>
 			                		
@@ -167,12 +167,6 @@
 			                	
 			                <%}
 			                }%>
-			                
-			                <%String contenido=(String)request.getAttribute("contenido");
-			                
-			                if(contenido!=null){%>
-			                <textarea rows="50" cols="30"><%=contenido %></textarea>
-			                <%} %>
                 	</div>	
            		</form>
            	</div>
