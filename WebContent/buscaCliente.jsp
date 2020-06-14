@@ -151,7 +151,7 @@
                         
                         <%String resultado=(String)request.getAttribute("existe");
                 		  String frase=(String)request.getAttribute("frase");
-                		  File archivo=(File)request.getAttribute("archivo");		
+                		  String archivo=(String)request.getAttribute("archivo");		
                 		  
                 				
 			                if(resultado!=null){
@@ -159,7 +159,7 @@
 			                	if(resultado.contains("Accede")){
 			                %>
 			                <p style="font-weight:bold; margin-left:15%"><%=frase %></p>
-			                <a href="archivoPrueba.txt" style="font-weight:bold"><%=resultado %></a>
+			                <a href="<%=archivo %>.txt" style="font-weight:bold"><%=resultado %></a>
 			                
 			                <%}else{%>
 			                		
