@@ -1,5 +1,9 @@
 package controladores;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -25,13 +29,16 @@ public class InformeClienteServlet extends HttpServlet {
 	private UsuariosDao usudao=new UsuariosDao();
 	private PedidoDao pedidao=new PedidoDao();
 	
+	String encuentra;
+	
 	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		RequestDispatcher rd;
+		
+		
 		
 		
 		
@@ -43,31 +50,100 @@ public class InformeClienteServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		String idUsuario=request.getParameter("idCliente");
-		String nombre=request.getParameter("nombre");
-		
-		Usuario usuario=usudao.leer(idUsuario);
-		request.setAttribute("usuario", usuario);
-		
-		if(usuario==null) {
-			request.setAttribute("error", "El id cliente y/o el nombre no son correctos");
-			
-			RequestDispatcher dispatcher=request.getRequestDispatcher("/buscaCliente.jsp");
-			dispatcher.forward(request, response);
-			
-			return;
-		}
-		
 		HttpSession sesion=request.getSession();
 		
-		sesion.setAttribute("idCliente", usuario.getId());
-		sesion.setAttribute("nombre", usuario.getNombre());
-		sesion.setAttribute("apellido1", usuario.getApellido1());
-		sesion.setAttribute("direccion", usuario.getDireccion());
+		String email=request.getParameter("email");
+		String nombre=request.getParameter("nombre");
+		String frase="Cliente " + email + " encontrado";
 		
-		RequestDispatcher rd=request.getRequestDispatcher("/buscaCliente.jsp");
+		Usuario usuario=usudao.leer(email);
+		
+		String existe;
+		RequestDispatcher rd;
 		
 		
+		if(usuario==null) {
+			
+			existe=noEncuentra();
+			
+			request.setAttribute("existe", existe);
+			
+			rd=request.getRequestDispatcher("/buscaCliente.jsp");
+			
+			rd.forward(request, response);
+			
+			
+		}else {
+				
+				existe=siEncuentra();
+				
+				request.setAttribute("existe", existe);
+				
+				request.setAttribute("frase", frase);
+				
+				String nombreArchivo=(email.substring(0, (email.length()-4))) + ".txt";
+				
+				File archivo=new File(nombreArchivo);
+				
+				request.setAttribute("archivo", archivo);
+				
+				rd=request.getRequestDispatcher("/buscaCliente.jsp"); 
+				
+				rd.forward(request, response);
+				
+			
+			
+		}
+		
+	}
+	
+	public String noEncuentra() {
+		
+		encuentra="El id cliente y/o el nombre no son correctos";
+		
+		return encuentra;
+		
+	}
+	
+	public String siEncuentra() {
+		
+		
+		encuentra="Acceder al informe";
+		
+		return encuentra;
+		
+	}
+	
+	public void leeFichero() {
+		
+		try {
+			
+			FileReader entrada=new FileReader("archivoPrueba.txt");
+			
+			BufferedReader mibuffer=new BufferedReader(entrada);
+			
+			String linea="";
+			
+			String contenido="";
+			
+			while(linea!=null) {
+				
+				linea=mibuffer.readLine();
+				
+				if(linea!=null) {
+					
+					contenido+=linea;
+					
+				}
+				
+			}
+			
+			entrada.close();
+			
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
 		
 	}
 
