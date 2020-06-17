@@ -31,9 +31,11 @@ public class listadoClientesServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		RequestDispatcher rd;
-		
-		
+			RequestDispatcher rd;
+			
+			FicheroClientes archivo=new FicheroClientes();
+			
+			archivo.escribeArchivo("archivoDetallesClientes.txt");
 			
 			List<Usuario> listadoClientes=usu.leerTodos();
 			

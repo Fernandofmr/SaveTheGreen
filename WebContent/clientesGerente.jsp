@@ -151,6 +151,7 @@
                 
                  <%List<Usuario> usuario=(List<Usuario>) request.getAttribute("listadoClientes");
                  List<Pedido> pedido=(List<Pedido>) request.getAttribute("listadoPedidos");
+                 String contenido=(String) request.getAttribute("contenido");
                  
                  %><thead>
                         <tr>
@@ -183,11 +184,13 @@
                     
                      <%} 
                      }%>
+                     
+                     
                     
                 </table>
                 
                
-                
+                <a href="archivoDetallesClientes.txt" style="color:green; font-weight:bold">Acceder al archivo</a>
 				
             </div>
         </section>

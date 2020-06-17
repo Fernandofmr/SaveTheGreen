@@ -1,54 +1,54 @@
-<!--<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>-->
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@ page import="java.util.List" %>
+<%@ page import="modelos.Producto" %>
 <!DOCTYPE html>
 <html lang="es">
-    <head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="" content="">
+    <title>TOPE: Listado productos</title>
 
-        <meta charset="utf-8">
-        <title>Listado Productos</title>
 
-
-
-        <!-- Favicons
+    <!-- Favicons
 ================================================== -->
-        <link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="icon" type="image/png" href="images/favicon.png">
 
 
-        <!-- Fonts
+<!-- Fonts
 ================================================== -->
-        <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700%7COpen+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700%7COpen+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
 
-        <!-- CSS
+<!-- CSS
 ================================================== -->
 
-        <!-- bootstrap -->
-        <link rel="stylesheet" href="css/bootstrap.css">
+<!-- bootstrap -->
+<link rel="stylesheet" href="css/bootstrap.css">
 
-        <!-- advisor -->
-        <link rel="stylesheet" href="css/advisor.css">
+<!-- advisor -->
+<link rel="stylesheet" href="css/advisor.css">
 
-        <!-- plugins -->
-        <link rel="stylesheet" href="css/plugins.css">	
+<!-- plugins -->
+<link rel="stylesheet" href="css/plugins.css">	
 
-        <!-- advisor color -->
-        <link rel="stylesheet" id="color" href="css/color-default.css">
+<!-- advisor color -->
+<link rel="stylesheet" id="color" href="css/color-default.css">
 
-        <!-- hero slider -->
-        <link rel="stylesheet" href="css/hero-slider.css">
+<!-- hero slider -->
+<link rel="stylesheet" href="css/hero-slider.css">
 
-        <!-- responsive -->
-        <link rel="stylesheet" href="css/responsive.css">
+<!-- responsive -->
+<link rel="stylesheet" href="css/responsive.css">
 
 
-        <!-- HEADER SCRIPTS
+<!-- HEADER SCRIPTS
 
 ================================================== -->
-        <script src="js/modernizr.js"></script>
+<script src="js/modernizr.js"></script>
 
-        <script src="jquery-proyecto/jquery-3.4.1.min.js"></script>
+<script src="jquery-proyecto/jquery-3.4.1.min.js"></script>
 
-        <script>
+<script>
 
             $(document).ready(function(){
 
@@ -58,18 +58,24 @@ pageEncoding="UTF-8"%>-->
 
                 $(".nav-pills").hide().fadeIn(1000);
 
-                $(".testimonial-content").hide();
-
                 $(".service-box p").hide();
 
-                
+                $("#contenedor_formulario").hide().fadeIn(1000);
+
+                $("#registro").hide().fadeIn(3000);
+
+                $(".titulo").hide().fadeIn(3000);
+
+
+               
 
             });
 
         </script>
 
+</head>
 
-    </head>
+
  <body class="fixed-header">
 
 
@@ -102,7 +108,6 @@ pageEncoding="UTF-8"%>-->
                 <ul class="nav nav-pills negrita">
                     <li class="dropdown"><a href="">Gestión Clientes  <img src="imagenes/styled-select-arrow.png" alt=""> </a>
                         <ul class="dropdown-menu">
-                            <li><a href="clientesListado.jsp">Listado clientes</a></li>
                             <li><a href="">Informe clientes</a></li>
                             <li><a href="">Alta/Baja cliente</a></li>
                         </ul>
@@ -135,41 +140,51 @@ pageEncoding="UTF-8"%>-->
         <!-- / FIN FOTO PRINCIPAL -->
 <!--FIN CONTENEDOR ENCABEZADO-->
 
-
         <!-- SECCIÓN CLIENTES LISTADO -->
         <section class="bg-blue">
             <div class="container">
 
-                <h2>Listado Productos</h2>
+                <h2>Listado productos</h2>
+                
+                <%List<Producto> producto=(List<Producto>) request.getAttribute("listaProductos"); %>
+               
                 <table class="table">
-                    <thead>
+                
+                 <thead>
                         <tr>
-                            <th scope="col">Ref.</th>
-                            <th scope="col">Producto</th>
+                            <th scope="col">Referencia</th>
+                            <th scope="col">Nombre</th>
                             <th scope="col">Precio</th>
                         </tr>
                     </thead>
+                    
+                    <%for(int i=0; i<producto.size(); i++){
+                    	Producto p=producto.get(i);
+                    	
+                    	%>
+                   
+               
+                    
                     <tbody>
                         <tr>
-                            <th scope="row">145345</th>
-                            <td>Naranjas</td>
-                            <td>1.4</td>
+                        	<td><%=p.getReferenciaProducto() %></td>
+                            <td><%=p.getNombreProducto() %></td>
+                            <td><%=p.getPrecioProducto() %></td>
                         </tr>
-                        <tr>
-                            <th scope="row">634654</th>
-                            <td>Pimientos</td>
-                            <td>2.4</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">365234</th>
-                            <td>Jabón</td>
-                            <td>13.4</td>
-                        </tr>
+                        
                     </tbody>
+                    
+                    <%	 } %> 
+                    
                 </table>
-
+                
+               
+                
+				
             </div>
         </section>
+
+
         <!-- / FIN DE SECCIÓN BIENVENIDO A TOPE -->
 
 
@@ -259,6 +274,7 @@ pageEncoding="UTF-8"%>-->
 
 
 
+
         <!-- FOOTER SCRIPTS
 ================================================== -->
         <script src="js/jquery-2.2.0.js"></script>
@@ -277,4 +293,3 @@ pageEncoding="UTF-8"%>-->
 
     </body>
 </html>
-        
