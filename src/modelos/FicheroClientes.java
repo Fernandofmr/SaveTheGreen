@@ -7,9 +7,9 @@ import java.io.PrintWriter;
 
 public class FicheroClientes {
 	
-	public void escribeArchivo(String nombre) {
+	public void escribeArchivo(String nombre, String contenido) {
 			
-			String contenido="Hola a todos, sigo probando pero ¡no lo consigo!";
+			
 			
 			File f;
 			FileWriter w;

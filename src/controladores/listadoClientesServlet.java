@@ -31,25 +31,53 @@ public class listadoClientesServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-			RequestDispatcher rd;
-			
-			FicheroClientes archivo=new FicheroClientes();
-			
-			archivo.escribeArchivo("archivoDetallesClientes.txt");
-			
-			List<Usuario> listadoClientes=usu.leerTodos();
-			
-			request.setAttribute("listadoClientes", listadoClientes);
-			
-			List<Pedido> listadoPedidos=pedidao.leerTodos();
-			
-			request.setAttribute("listadoPedidos", listadoPedidos);
-			
-			rd=request.getRequestDispatcher("/clientesGerente.jsp");
-			
-			rd.forward(request, response);
+		RequestDispatcher rd;
+		
+		String contenido;
+		
+		FicheroClientes archivo=new FicheroClientes();
+		
+		List<Usuario> listadoClientes=usu.leerTodos();
+		
+		request.setAttribute("listadoClientes", listadoClientes);
+		
+		List<Pedido> listadoPedidos=pedidao.leerTodos();
+		
+		request.setAttribute("listadoPedidos", listadoPedidos);
+		
+		contenido=dameListado(listadoClientes, listadoPedidos);
+		
+		archivo.escribeArchivo("archivoDetallesClientes.txt", contenido);
+		
+		rd=request.getRequestDispatcher("/clientesGerente.jsp");
+		
+		rd.forward(request, response);
 			
 	}	
+	
+	
+	public String dameListado(List<Usuario> listUsu, List<Pedido> listPed) {
+		
+		String contenido="					----------LISTA CLIENTES----------\n\n\n"
+				+ "NOMBRE\t APELLIDO 1\t APELLIDO 2\t ID CLIENTE\t EMAIL\t TELÉFONO\t ID PEDIDO\n";
+		
+		for(int i=0; i<listUsu.size(); i++) {
+			
+			Usuario usuario=listUsu.get(i);
+			Pedido pedido=listPed.get(i);
+			
+			if(usuario.getTipo()==2) {
+			
+				contenido += usuario.getNombre() + "\t" + usuario.getApellido1() + "\t" + usuario.getApellido2() + "\t" 
+						+ usuario.getId() + "\t" + usuario.getEmail() + "\t" + usuario.getTelefono() + "\t" + pedido.getIdPedido() + "\n";
+			
+			}
+			
+		}
+		
+		return contenido;
+		
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
