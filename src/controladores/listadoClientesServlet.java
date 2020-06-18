@@ -59,7 +59,7 @@ public class listadoClientesServlet extends HttpServlet {
 	public String dameListado(List<Usuario> listUsu, List<Pedido> listPed) {
 		
 		String contenido="					----------LISTA CLIENTES----------\n\n\n"
-				+ "NOMBRE\t APELLIDO 1\t APELLIDO 2\t ID CLIENTE\t EMAIL\t TELÉFONO\t ID PEDIDO\n";
+				+ "NOMBRE\t\t\t ID CLIENTE\t\t\t EMAIL\t\t\t TELÉFONO\t\t\t ID PEDIDO\n\n";
 		
 		for(int i=0; i<listUsu.size(); i++) {
 			
@@ -68,8 +68,7 @@ public class listadoClientesServlet extends HttpServlet {
 			
 			if(usuario.getTipo()==2) {
 			
-				contenido += usuario.getNombre() + "\t" + usuario.getApellido1() + "\t" + usuario.getApellido2() + "\t" 
-						+ usuario.getId() + "\t" + usuario.getEmail() + "\t" + usuario.getTelefono() + "\t" + pedido.getIdPedido() + "\n";
+				contenido += usuario.getNombre() + "\t\t\t" + usuario.getId() + "\t\t\t" + usuario.getEmail() + "\t\t\t" + usuario.getTelefono() + "\t\t\t" + pedido.getIdPedido() + "\n\n";
 			
 			}
 			
