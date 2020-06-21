@@ -40,7 +40,30 @@ public class ProductoDao {
 	//CRUD (Create-Read-Update-Delete)
 	public int crear(Producto prod) {
 		// Codigo para insertar producto en la tabla productos
-		return 0; //Devolverá el id generado por base de datos
+		try(Connection conn = DriverManager.getConnection(DataBaseConfiguration.URL)){
+			
+			PreparedStatement ps = conn.prepareStatement("INSERT INTO producto (ref, nombre, imagen, precio) VALUES (?, ?, ?, ?)");
+			
+			ps.setString(1, prod.getReferenciaProducto());
+			ps.setString(2, prod.getNombreProducto());
+			ps.setString(3, prod.getImagen());
+			ps.setDouble(4, prod.getPrecioProducto());
+			
+			ps.execute();
+			
+			ResultSet rs=ps.getGeneratedKeys();
+			rs.next();
+			int idGenerado=rs.getInt(1);
+			
+			conn.close();
+			
+			return idGenerado;
+			
+		}catch(SQLException e) {
+			throw new AccesoDatosException(e.getMessage());
+		}
+		
+		 //Devolverá el id generado por base de datos
 	}
 	
 	public Producto leer(int idProducto) {
@@ -58,6 +81,33 @@ public class ProductoDao {
 				
 				
 				Producto producto = new Producto(idProducto, ref, nombre, precio, imagen);
+				
+				return producto;
+			}
+			else { //No se ha encontrado ningun producto con ese id
+				return null;
+			}
+		}
+		catch(SQLException e) { //reconvierte la sql exception a la personalizada que hemos creado, para relanzar a la web
+			throw new AccesoDatosException(e.getMessage());
+		}
+	}
+	
+	public Producto leer(String nom) {
+		try(Connection conn = DriverManager.getConnection(DataBaseConfiguration.URL)) {
+			//Statement o PreparedStatement
+			PreparedStatement ps = conn.prepareStatement("SELECT * FROM producto WHERE nombre = ?");
+			ps.setString(1, nom);
+			
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()) {
+				String ref = rs.getString("ref");
+				double precio = rs.getDouble("precio");
+				String nombre = rs.getString("nombre");
+				String imagen = rs.getString("imagen");
+				
+				
+				Producto producto = new Producto(ref, nombre, precio, imagen);
 				
 				return producto;
 			}
@@ -125,6 +175,28 @@ public class ProductoDao {
 		
 		//Devuelve si ha sido eliminado o no
 		return false;
+	}
+	
+	public String eliminar(String nombreProducto) {
+		
+		try (Connection conn=DriverManager.getConnection(DataBaseConfiguration.URL);){
+			
+			PreparedStatement ps=conn.prepareStatement("DELETE FROM producto WHERE nombre = ? ");
+			
+			ps.setString(1, nombreProducto);
+			
+			int rs=ps.executeUpdate();
+			
+		}catch(SQLException e){
+			
+			e.getMessage();
+			
+		}
+		
+		String existe="�Has dado de baja el producto satisfactoriamente!";
+		
+		return existe;
+		
 	}
 
 }

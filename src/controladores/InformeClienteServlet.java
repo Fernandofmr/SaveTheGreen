@@ -81,9 +81,7 @@ public class InformeClienteServlet extends HttpServlet {
 				
 				request.setAttribute("frase", frase);
 				
-				String nombreArchivo=(email.substring(0, (email.length()-4))) + ".txt";
-				
-				File archivo=new File(nombreArchivo);
+				String archivo=(email.substring(0, (email.length()-4)));
 				
 				request.setAttribute("archivo", archivo);
 				
@@ -114,37 +112,6 @@ public class InformeClienteServlet extends HttpServlet {
 		
 	}
 	
-	public void leeFichero() {
-		
-		try {
-			
-			FileReader entrada=new FileReader("archivoPrueba.txt");
-			
-			BufferedReader mibuffer=new BufferedReader(entrada);
-			
-			String linea="";
-			
-			String contenido="";
-			
-			while(linea!=null) {
-				
-				linea=mibuffer.readLine();
-				
-				if(linea!=null) {
-					
-					contenido+=linea;
-					
-				}
-				
-			}
-			
-			entrada.close();
-			
-		} catch (IOException e) {
-			
-			e.printStackTrace();
-		}
-		
-	}
+	
 
 }

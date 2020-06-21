@@ -107,6 +107,7 @@
                     <li class="dropdown"><a href="">Gestión Clientes  <img src="imagenes/styled-select-arrow.png" alt=""> </a>
                         <ul class="dropdown-menu">
                             <li><a href="<%= request.getContextPath() %>/listadoClientes">Listado clientes</a></li>
+                            <li><a href="<%= request.getContextPath() %>/ArchivoListaClientes">Archivo lista clientes</a></li>
                             <li><a href="buscaCliente.jsp">Informe clientes</a></li>
                             <li><a href="bajaCliente.jsp">Baja cliente</a></li>
                         </ul>
@@ -120,8 +121,8 @@
                     <li class="dropdown"><a href="#.">Catálogo Productos  <img src="imagenes/styled-select-arrow.png" alt=""></a>
                         <ul class="dropdown-menu">
                             <li><a href="<%= request.getContextPath() %>/ListadoProductos">Listado Productos</a></li>
-                            <li><a href="altaProducto.jsp">Dar de alta Productos</a></li>
-                            <li><a href="bajaProducto.jsp">Dar de baja producto</a></li>
+                            <li><a href="">Dar de alta Productos</a></li>
+                            <li><a href="">Borrar Producto</a></li>
                 </ul>
             </li>
         </ul>
@@ -139,6 +140,50 @@
         </section> 
         <!-- / FIN FOTO PRINCIPAL -->
 <!--FIN CONTENEDOR ENCABEZADO-->
+
+<section class="bg-blue" style="margin-top: -10%;">
+             
+                <div class="container">
+                    <div class="heading text-center animate bounceIn informacion"> 
+                     <h1 class="titulo">Alta producto</h1>  <br><br> 
+       
+           
+         
+        <div class="request-a-callback clearfix animate fadeInUp">
+            <div class="request-a-callback-content">
+                <p>Introduce los datos del nuevo producto</p><br>
+                    <p>(Los campos que contienen un * son obligatorios).
+                </p>
+
+            </div>
+            <div class="request-a-callback-form">
+            
+                <form action="<%= request.getContextPath() %>/AltaProducto"  method="post" name="registro" id="registro">
+                
+                    <input type="text" name="nombre" id="nombre" class="izquierda" placeholder="Nombre del producto*" required>
+                    <input type="text" name="referencia" id="referencia" class="izquierda" placeholder="Asigna el nº de referencia">
+                    <input type="text" name="imagen" id="imagen" class="izquierda" placeholder="Nombre imagen; (p.e. 'tomate.jpeg') ">
+                    <input type="text" name="precio" id="precio" class="izquierda" placeholder="Precio*" required><br>
+                    <button data-text="Dar de alta" class="btn btn-primary">Dar de alta</button>
+                </form>
+                
+                <%String alta=(String)request.getAttribute("alta"); 
+                	if(alta!=null){
+                
+                %>
+                <br><br>
+                <p style="color:green; font-weight:bold"><%=alta %></p>
+                
+                <%} %>
+                
+            </div>
+        </div>
+   
+
+        
+        </div>
+        </div>
+</section>
 
 <!-- FOOTER -->
        <footer id="footer">

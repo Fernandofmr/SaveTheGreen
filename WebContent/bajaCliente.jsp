@@ -6,7 +6,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>TOPE: iniciar sesión</title>
+    <title>TOPE: Baja cliente</title>
  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <!-- bootstrap -->
     <link rel="stylesheet" href="css/bootstrap.css">
@@ -60,6 +60,21 @@
             
         });
         
+        function confirmaCierre(){
+   			
+   			var respuesta=confirm("¿Estás seguro que deseas borrar al cliente de la base de datos?");
+   			
+   			if(respuesta){
+   				
+   				window.location.href ="<%= request.getContextPath() %>/BajaClientes" ;
+   				
+   			}else{
+   				
+   				window.location.href="bajaCliente.jsp";
+   			}
+   			
+   		}
+        
     </script>
     
     
@@ -101,7 +116,7 @@
                     <li class="dropdown"><a href="">Gestión Clientes  <img src="imagenes/styled-select-arrow.png" alt=""> </a>
                         <ul class="dropdown-menu">
                             <li><a href="<%= request.getContextPath() %>/listadoClientes">Listado clientes</a></li>
-                            <li><a href="">Alta/Baja cliente</a></li>
+                            <li><a href="buscaCliente.jsp">Informe clientes</a></li>
                         </ul>
                     </li>
                     <li class="dropdown"><a href="">Gestión Ventas  <img src="imagenes/styled-select-arrow.png" alt=""></a>
@@ -134,39 +149,34 @@
         <section class="bg-blue" style="margin-top: -10%;">
           <div class="container">
             <div class="heading text-center animate bounceIn informacion"> 
-                <h1 class="titulo">Informe cliente</h1> 
+                <h1 class="titulo">Baja cliente</h1> 
                 <br><br> 
                 <div class="request-a-callback-content">
-                   	 	<p>Introduce los datos del cliente para acceder al informe <br> 
+                   	 	<p>Introduce los datos del cliente al que quieres dar de baja<br> 
                    	 		
                    	 	</p>
                 </div>   
-                <form id="form_datos" name="form_datos" id="form_datos"  action="<%= request.getContextPath() %>/InformeClientes" method="post">
+                <form id="form_datos" name="form_datos" id="form_datos"  action="<%= request.getContextPath() %>/BajaClientes" method="post">
 					<div class="request-a-callback-form">
                 		<label for="nombre"></label>
                         <!--  <input type="text" name="idCliente" id="idCliente" placeholder="Id cliente" required title="Campo obligatorio">-->
                         <input type="text" name="email" id="email" placeholder="Email cliente" required title="Campo obligatorio">
-                        <input type="text" name="nombre" id="nombre" placeholder="Nombre cliente" required title="Campo obligatorio"><br>
-                        <button type="submit" data-text="Buscar informe" class="btn btn-primary">Buscar informe</button><br><br><br>
+                        <button type="submit" data-text="Dar de baja" class="btn btn-primary" onClick="confirmaCierre()">Dar de baja</button><br><br><br>
                         
-                        <%String resultado=(String)request.getAttribute("existe");
-                		  String frase=(String)request.getAttribute("frase");
-                		  String archivo=(String)request.getAttribute("archivo");		
-                		  
+                        <%String existe=(String)request.getAttribute("existe");
                 				
-			                if(resultado!=null){
-			                	
-			                	if(resultado.contains("Accede")){
-			                %>
-			                <p style="font-weight:bold; margin-left:15%"><%=frase %></p>
-			                <a href="<%=archivo %>.txt" style="font-weight:bold"><%=resultado %></a>
-			                
-			                <%}else{%>
-			                		
-			                		<p style="font-weight:bold; margin-left:15%; color:red"><%=resultado %></p>
-			                	
-			                <%}
-			                }%>
+                				if(existe!=null){
+                					if(existe.contains("NO")){
+                				%>
+                        	<p style="font-weight:bold; margin-left:10%; color:red"><%=existe %></p>
+                        
+                       		<%}else{%>
+                       		
+                       		<p style="font-weight:bold; margin-left:10%; color:green"><%=existe %></p>
+                       			
+                       		<%}
+                					}%>
+                        
                 	</div>	
            		</form>
            	</div>

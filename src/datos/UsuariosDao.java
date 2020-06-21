@@ -269,6 +269,28 @@ public class UsuariosDao {
 		}
 	}
 	
+	public String borrarUsuario(String email) {
+		
+		try (Connection conn=DriverManager.getConnection(DataBaseConfiguration.URL);){
+			
+			PreparedStatement ps=conn.prepareStatement("DELETE FROM usuario_datos WHERE email = ? ");
+			
+			ps.setString(1, email);
+			
+			int rs=ps.executeUpdate();
+			
+		}catch(SQLException e){
+			
+			e.getMessage();
+			
+		}
+		
+		String existe="¡Has dado de baja al cliente satisfactoriamente!";
+		
+		return existe;
+		
+	}
+	
 	
 
 }

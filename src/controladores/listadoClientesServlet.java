@@ -33,21 +33,54 @@ public class listadoClientesServlet extends HttpServlet {
 		
 		
 		
+		String contenido;
 		
-			
-			List<Usuario> listadoClientes=usu.leerTodos();
-			
-			request.setAttribute("listadoClientes", listadoClientes);
-			
-			List<Pedido> listadoPedidos=pedidao.leerTodos();
-			
-			request.setAttribute("listadoPedidos", listadoPedidos);
-			
-			RequestDispatcher rd=request.getRequestDispatcher("/clientesGerente.jsp");
-			
-			rd.forward(request, response);
+		FicheroClientes archivo=new FicheroClientes();
+		
+		List<Usuario> listadoClientes=usu.leerTodos();
+		
+		request.setAttribute("listadoClientes", listadoClientes);
+		
+		List<Pedido> listadoPedidos=pedidao.leerTodos();
+		
+		request.setAttribute("listadoPedidos", listadoPedidos);
+		
+		contenido=dameListado(listadoClientes, listadoPedidos);
+		
+		archivo.escribeArchivo("archivoDetallesClientes.txt", contenido);
+		
+		rd=request.getRequestDispatcher("/clientesGerente.jsp");
+		
+		rd.forward(request, response);
 			
 	}	
+	
+	
+	public String dameListado(List<Usuario> listUsu, List<Pedido> listPed) {
+		
+		String contenido="					----------LISTA CLIENTES----------\n\n\n"
+				+ "NOMBRE\t\t\t ID CLIENTE\t\t\t EMAIL\t\t\t TELÉFONO\t\t\t ID PEDIDO\n\n";
+		
+		for(int i=0; i<listUsu.size(); i++) {
+			
+			Usuario usuario=listUsu.get(i);
+			Pedido pedido=listPed.get(i);
+			
+			if(usuario.getTipo()==2) {
+			
+<<<<<<< HEAD
+			RequestDispatcher rd=request.getRequestDispatcher("/clientesGerente.jsp");
+=======
+				contenido += usuario.getNombre() + "\t\t\t" + usuario.getId() + "\t\t\t" + usuario.getEmail() + "\t\t\t" + usuario.getTelefono() + "\t\t\t" + pedido.getIdPedido() + "\n\n";
+>>>>>>> 3c65b52e8f6d55b504edb2edd2c058129be66ac8
+			
+			}
+			
+		}
+		
+		return contenido;
+		
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
